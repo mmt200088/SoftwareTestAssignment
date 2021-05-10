@@ -12,13 +12,13 @@ import java.util.List;
 @Service
 public class Q6Service {
 
-    private static final int[] TEST_CASE_ID = new int[]{1,2,3,4};
-    private static final int[] CALL_TIME = new int[]{1,2,3,4};
-    private static final int[] UNPAID_NUM = new int[]{1,2,3,4};
-    private static final String[] EXPECTED_OUT_PUT = new String[]{"1","2","3","4"};
-    private static final String[] ACTUAL_OUT_PUT = new String[]{"1","2","3","4"};
-    private static final boolean[] CORRECTNESS = new boolean[]{true, true, true, true};
-    private static final String[] TESTER = new String[]{"anonymous", "anonymous", "anonymous", "anonymous"};
+    private static final int[] TEST_CASE_ID = new int[]{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+    private static final int[] CALL_TIME = new int[]{0,1,59,60,61,119,120,121,179,180,181,299,300,301,44639,44640,44640,44641,-1,400,400};
+    private static final int[] UNPAID_NUM = new int[]{0,1,1,1,2,2,2,3,3,3,4,4,5,6,7,11,12,12,12,13,-1};
+    private static final String[] EXPECTED_OUT_PUT = new String[]{"error","25.15","33.76","33.91","34.01","42.58","42.73","42.79","51.31","51.46","52.15","69.85","70.00","68.80","6720.85","6721","6721","error","error","error","error"};
+    private static final String[] ACTUAL_OUT_PUT = new String[]{"error","25.15","33.76","33.91","34.01","42.58","42.73","42.79","51.31","51.46","52.15","69.85","70.00","68.80","6720.85","6721","6721","error","error","error","error"};
+    private static final boolean[] CORRECTNESS = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,true, true, true, true, true};
+    private static final String[] TESTER = new String[]{"anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous"};
 
 
     public boolean validate (EleCharge charge){

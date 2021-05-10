@@ -2,6 +2,7 @@ package com.example.testingbackground.Controller;
 
 
 import com.example.testingbackground.Entity.ComputerSale;
+import com.example.testingbackground.Entity.QuestionThreeTest;
 import com.example.testingbackground.Entity.Salesman;
 import com.example.testingbackground.Service.QuestionThreeService;
 import net.sf.json.JSONObject;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,7 +25,7 @@ import java.util.Map;
 public class QuestionThreeController {
 
     @Autowired
-    private QuestionThreeService question3Service;
+    private QuestionThreeService questionThreeService;
 
     /*请求体格式
     {
@@ -35,16 +38,17 @@ public class QuestionThreeController {
     {
        "status":"",     //状态值，0为输入值不合法，200为输入合法，500为服务器错误
        "message":"",    //提示信息
-       "sales":""       //销售佣金
+       "sales":""       //销售额
+       "commission":""  //销售佣金
     }
      */
 
-    @RequestMapping(value = "/manualtest/salesys", method = RequestMethod.POST)
+    @RequestMapping(value = "/questionThree/manualtest", method = RequestMethod.POST)
     public Object getSales(@RequestBody JSONObject jsonObject){
         Map<String,Object> result=new HashMap<>();
         try{
-            Integer host=jsonObject.getInt("host");
             //传入数据为空时会报错，建议在前端界面中进行控制
+            Integer host=jsonObject.getInt("host");
             Integer monitor=jsonObject.getInt("monitor");
             Integer io=jsonObject.getInt("io");
 
@@ -55,17 +59,19 @@ public class QuestionThreeController {
             computerSale.setIO(io);
             salesman.setComputerSale(computerSale);
 
-            String check=question3Service.ifValidate(salesman);
-            if(!check.equals("销售数量符合要求")){
+            String check=questionThreeService.ifValidate(salesman);
+            if(!"销售数量符合要求".equals(check)){
                 result.put("status",0);
                 result.put("message",check);
                 result.put("sales",0);
+                result.put("commission",0);
                 return result;
             }
-            double sales=question3Service.calculate(salesman);
+            int sales=questionThreeService.calculate(salesman);
             result.put("status",200);
             result.put("message","成功计算出佣金");
             result.put("sales",sales);
+            result.put("commission",salesman.getCommission());
             return result;
         }
         catch (Exception e){
@@ -73,7 +79,42 @@ public class QuestionThreeController {
             result.put("status",500);
             result.put("message","服务器端出错");
             result.put("sales",0);
+            result.put("commission",0);
             return result;
         }
+    }
+
+    /**
+    *边界值输入测试
+    */
+    @RequestMapping(value = "/questionThree/boundaryInput", method = RequestMethod.POST)
+    public Object boundaryInput(){
+        Map<String,Object> result=new HashMap<>();
+        try{
+            List list=questionThreeService.boundaryInputTest();
+            result.put("status",200);
+            result.put("data",list);
+        }
+        catch (Exception e){
+            result.put("status",500);
+        }
+        return result;
+    }
+
+    /**
+     *边界值输出测试
+     */
+    @RequestMapping(value = "/questionThree/boundaryOutput", method = RequestMethod.POST)
+    public Object boundaryOutput(){
+        Map<String,Object> result=new HashMap<>();
+        try{
+            List list=questionThreeService.boundaryOutputTest();
+            result.put("status",200);
+            result.put("data",list);
+        }
+        catch (Exception e){
+            result.put("status",500);
+        }
+        return result;
     }
 }

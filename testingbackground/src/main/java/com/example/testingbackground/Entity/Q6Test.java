@@ -9,8 +9,8 @@ public class Q6Test {
     private int testCaseId;
     private int callTime;
     private int unpaidNum;
-    private double expectedOutput;
-    private double actualOutput;
+    private String expectedOutput;
+    private String actualOutput;
     private boolean correctness;
     private String tester;
 }

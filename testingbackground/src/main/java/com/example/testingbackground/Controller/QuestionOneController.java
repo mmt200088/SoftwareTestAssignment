@@ -23,6 +23,7 @@ public class QuestionOneController {
 
     @Autowired
     private QuestionOneService questionOneService;
+    @CrossOrigin
     @RequestMapping(value = "/questionOne/manualtest", method = RequestMethod.POST)
     public Object ifValidate(@RequestBody JSONObject jsonObject){
         Map<String,Object> result=new HashMap<>();
@@ -79,6 +80,7 @@ public class QuestionOneController {
     /**
      *边界值输入测试
      */
+    @CrossOrigin
     @RequestMapping(value = "/questionOne/boundary", method = RequestMethod.POST)
     public Object boundaryInput(){
         Map<String,Object> result=new HashMap<>();
@@ -96,6 +98,7 @@ public class QuestionOneController {
     /**
      *等价类输入测试
      */
+    @CrossOrigin
     @RequestMapping(value = "/questionOne/equivalent", method = RequestMethod.POST)
     public Object equivalentInput(){
         Map<String,Object> result=new HashMap<>();

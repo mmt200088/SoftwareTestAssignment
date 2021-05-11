@@ -5,10 +5,7 @@ import com.example.testingbackground.Entity.Q6Test;
 import com.example.testingbackground.Service.Q6Service;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +21,7 @@ public class Q6Controller {
     @Autowired
     private Q6Service q6Service;
 
+    @CrossOrigin
     @RequestMapping(value = "/Q6/manual", method = RequestMethod.POST)
     public Object getCost(@RequestBody JSONObject jsonObject){
         Map<String, Object> result = new HashMap<>();
@@ -57,6 +55,7 @@ public class Q6Controller {
         }
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/Q6/boundary",method = RequestMethod.POST)
     public Object boundary(){
         Map<String,Object> result=new HashMap<>();
@@ -70,6 +69,7 @@ public class Q6Controller {
         }
         return result;
     }
+    @CrossOrigin
     @RequestMapping(value = "/Q6/equivalence",method = RequestMethod.POST)
     public Object equivalence(){
         Map<String,Object> result=new HashMap<>();
@@ -83,6 +83,7 @@ public class Q6Controller {
         }
         return result;
     }
+    @CrossOrigin
     @RequestMapping(value = "/Q6/decision",method = RequestMethod.POST)
     public Object decision(){
         Map<String,Object> result=new HashMap<>();

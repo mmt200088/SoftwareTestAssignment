@@ -7,10 +7,7 @@ import com.example.testingbackground.Entity.Salesman;
 import com.example.testingbackground.Service.QuestionThreeService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +40,7 @@ public class QuestionThreeController {
     }
      */
 
+    @CrossOrigin
     @RequestMapping(value = "/questionThree/manualtest", method = RequestMethod.POST)
     public Object getSales(@RequestBody JSONObject jsonObject){
         Map<String,Object> result=new HashMap<>();
@@ -87,6 +85,7 @@ public class QuestionThreeController {
     /**
     *边界值输入测试
     */
+    @CrossOrigin
     @RequestMapping(value = "/questionThree/boundaryInput", method = RequestMethod.POST)
     public Object boundaryInput(){
         Map<String,Object> result=new HashMap<>();
@@ -104,6 +103,7 @@ public class QuestionThreeController {
     /**
      *边界值输出测试
      */
+    @CrossOrigin
     @RequestMapping(value = "/questionThree/boundaryOutput", method = RequestMethod.POST)
     public Object boundaryOutput(){
         Map<String,Object> result=new HashMap<>();

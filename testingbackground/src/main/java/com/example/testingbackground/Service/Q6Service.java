@@ -21,6 +21,14 @@ public class Q6Service {
     private static final String[] TESTER = new String[]{"anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous"};
 
 
+    private static final int[] TEST_CASE_ID2 = new int[]{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17};
+    private static final int[] CALL_TIME2 = new int[]{60,120,180,300,400,400,-10,44650,60,60,120,180,300,400,-10,44650,-10,300};
+    private static final int[] UNPAID_NUM2 = new int[]{1,2,3,5,6,7,1,1,-10,20,1,2,3,5,-10,20,12,-10};
+    private static final String[] EXPECTED_OUT_PUT2 = new String[]{"33.91","42.73","51.46","68.88","83.2","85","error","error","error","error","42.73","51.46","68.88","83.2","error","error","error","error"};
+    private static final String[] ACTUAL_OUT_PUT2 = new String[]{"error","25.15","33.76","33.91","34.01","42.58","42.73","42.79","51.31","51.46","52.15","69.85","70.00","68.80","6720.85","6721","6721","error","error","error","error"};
+    private static final boolean[] CORRECTNESS2 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true};
+    private static final String[] TESTER2 = new String[]{"anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous", "anonymous", "anonymous","anonymous", "anonymous"};
+
     public boolean validate (EleCharge charge){
         int callTime = charge.getCallTime();
         int unpaidNum = charge.getUnpaidNum();
@@ -62,7 +70,7 @@ public class Q6Service {
     }
     public List<Q6Test> equivalence(){
         int len = TEST_CASE_ID.length;
-        return getList(len, TEST_CASE_ID, CALL_TIME, UNPAID_NUM, EXPECTED_OUT_PUT, ACTUAL_OUT_PUT, CORRECTNESS, TESTER);
+        return getList(len, TEST_CASE_ID2, CALL_TIME2, UNPAID_NUM2, EXPECTED_OUT_PUT2, ACTUAL_OUT_PUT2, CORRECTNESS, TESTER2);
     }
     public List<Q6Test> decision(){
         int len = TEST_CASE_ID.length;
